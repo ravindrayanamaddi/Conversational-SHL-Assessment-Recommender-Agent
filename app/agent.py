@@ -345,15 +345,19 @@ class SHLAgent:
 
         has_level = any(word in conversation_text.lower() for word in [
             "entry", "junior", "mid", "mid-level", "senior",
-            "lead", "4 years", "experienced", "fresher"
+            "lead", "4 years", "experienced", "fresher", "graduate"
+        ])
+        has_assessment_type = any(word in conversation_text.lower() for word in [
+        "cognitive", "reasoning", "ability", "personality", "opq", "coding", "technical"
         ])
 
-        if has_role and not has_level and len(history) <= 1:
-            return (
+        if has_role and not has_level and not has_assessment_type and len(history) <= 1:
+           if has_role and not has_level and len(history) <= 1:
+             return (
                 "Sure. What is seniority level?",
                 [],
                 False
-            )
+             )
 
         candidates = retriever.search(conversation_text, top_k=100)
         candidates = self._rerank_candidates(candidates, conversation_text)
