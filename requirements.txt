@@ -1,8 +1,15 @@
 fastapi
 uvicorn
 pydantic
-sentence_transformers
+numpy<2
+scikit-learn
 faiss-cpu
-numpy
-groq
 python-dotenv
+groq
+
+torch==2.2.2+cpu
+torchvision==0.17.2+cpu
+torchaudio==2.2.2+cpu
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+sentence-transformers==2.7.0

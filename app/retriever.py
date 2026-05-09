@@ -7,7 +7,7 @@ from app.catalog import catalog
 
 class Retriever:
     def __init__(self):
-        self.model = SentenceTransformer('all-MiniLM-L6-v2')
+        self.model = SentenceTransformer('all-MiniLM-L6-v2', device="cpu")
         self.index = None
         self.items = None
         self._build_index()
